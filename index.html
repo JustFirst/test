@@ -1,0 +1,56 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="css/styles.css">
+    </head>
+    <body>
+        <script type="text/template" id="form-template">
+            <h1>Инвестировать сейчас</h1>
+            <div class="separator">
+
+            </div>
+            <div class="invest">
+                <label for="invest-summ">Сумма инвестиции</label>
+                <input type="text" name="sumInv" class="invest-form-text" value="<%-formValues.sumInv%>"><br/>
+                <label for="multiplikator">Мультипликатор</label>
+                <input type="text" name="mult" class="invest-form-text" value="<%-formValues.mult%>">
+            </div>
+            <div class="limits">
+                <label for="limits-type">Ограничения в</label>
+                <div class="limits-type">
+                    <input type="radio" name="type" class="limits-type-radio" value="%">
+                    <label>%</label>
+                    <input type="radio" name="type" class="limits-type-radio" checked="checked" value="$">
+                    <label>$</label>
+                </div>
+                <div class="limits-values">
+                    <input type="checkbox" name="takeProfit" class="limits-values-checkbox">
+                    <label for="profit">Прибыль</label>
+                    <input type="text" name="takeProfit" class="invest-form-text" value="<%-formValues.takeProfit%>" disabled="disabled"><br/>
+                    <input type="checkbox" name="stopLoss" class="limits-values-checkbox">
+                    <label for="lose">Убыток</label>
+                    <input type="text" name="stopLoss" class="invest-form-text" value="<%-formValues.stopLoss%>" disabled="disabled">
+                </div>
+            </div>
+            <div class="post">
+                <div class="in-reduction">
+                    <input type="button" name="in-reduction" class="btn" value="В падение">
+                </div>
+                <div class="in-growth">
+                    <input type="button" name="in-growth" class="btn" value="В рост">
+                </div>
+            </div>
+        </script>
+
+        <form class="invest-form" action="index.html" method="post">
+
+        </form>
+
+        <script type="text/javascript" src="js/lib/jquery.min.js"></script>
+        <script type="text/javascript" src="js/lib/underscore-min.js"></script>
+        <script type="text/javascript" src="js/lib/backbone-min.js"></script>
+        <script type="text/javascript" src="js/model/investModel.js"></script>
+        <script type="text/javascript" src="js/view/investModelView.js"></script>
+    </body>
+</html>

@@ -1,0 +1,14 @@
+{
+  "name": "sibittest",
+  "version": "1.0.0",
+  "description": "test task for SIB IT",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Shvakov Dmitry",
+  "license": "MIT",
+  "devDependencies": {
+    "less": "^2.7.2"
+  }
+}
