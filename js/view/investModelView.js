@@ -22,8 +22,21 @@
                         this.model.set("direction", "reduction");
                     }
                     this.model.sendData();
+                },
+                "mousedown .slider-roller": "slide",
+                "mouseup": function () {
+                    if (this.slideActive === true) {
+                        $(document).off("mousemove");
+                        var slider = this.slider();
+                        var percent = slider.width()/100;
+                        var rollerPos = slider.find(".slider-roller").css("left").substring(0, $(event.target).css("left").indexOf("px"));
+                        this.model.set("mult", $("input[name=mult]").val());
+                        this.slideActive = false;
+                    }
                 }
             },
+
+            slideActive: false,
 
             options: {
                 validate: true,
@@ -78,8 +91,40 @@
                         }
                     }
                 }
-            }
+            },
 
+
+            slider: function () {
+                return this.$el.find(".slider-controller");
+            },
+
+            slide: function (event) {
+                event.preventDefault();
+                this.slideActive = true;
+                var slider = this.slider();
+                var percent = slider.width()/ 100;
+                var initCursorPos = event.pageX;
+                var initRollerPos = Number($(event.target).css("left").substring(0, $(event.target).css("left").indexOf("px")));
+                var currentCursorPos = 0;
+                $(document).mousemove(function (e) {
+                    var rollerPos = Number($(event.target).css("left").substring(0, $(event.target).css("left").indexOf("px")));
+                    currentCursorPos = e.pageX;
+                    if (rollerPos <= slider.width() && rollerPos >= 0) {
+                        if ((initRollerPos+currentCursorPos-initCursorPos)/percent < 100 && (initRollerPos+currentCursorPos-initCursorPos)/percent > 0) {
+                            $(event.target).css("left", (initRollerPos+currentCursorPos-initCursorPos)/percent+"%");
+                        }
+                        else {
+                            if ((rollerPos - 100) < 0) {
+                                $(event.target).css("left", "0%");
+                            }
+                            else {
+                                $(event.target).css("left", "100%");
+                            }
+                        }
+                        this.$el.find("input[name=mult]").val(Math.round(Number($(event.target).css("left").substring(0, $(event.target).css("left").indexOf("px"))/percent * 0.4)));
+                    }
+                }.bind(this));
+            }
         });
         new InvestModelView();
 })(window);

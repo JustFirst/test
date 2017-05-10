@@ -1,7 +1,76 @@
 //out: styles.css
 //sourcemap: false
 //compress: false
+@side-margin: 10;
+@form-heigth: 368;
+@form-widht: 316;
+
+h1 {
+    font-family:Helvetica;
+    font-size: 20px;
+    margin-left: @side-margin+0px;
+}
+
+p, span, label {
+    font-family:Helvetica;
+    font-size: 14px;
+}
+
+.header {
+    border-bottom: 1px solid #e0e2e4;
+}
+
+.float-left {
+    float: left;
+}
+
+.labels-padding {
+    padding-right: 40px;
+}
+
+.bottom-padding {
+
+}
+
 .invest-form {
-    height: 400px;
-    width: 300px;
+    height: @form-heigth+0px;
+    width: @form-widht+0px;
+}
+
+.elems-width {
+    width: (@form-widht/2-@side-margin*2)+0px;
+}
+
+.slider-controller {
+    border: 3px solid #7e98e5;
+    position: relative;
+    margin: 10px 0px;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.slider-roller {
+    width: 6px;
+    height: 6px;
+    border-radius: 100%;
+    border-width: 6px;
+    border-style: solid;
+    border-color: #7e98e5;
+    position: absolute;
+}
+
+.labels {
+    position: relative;
+    .elems-width;
+    .float-left;
+    margin-left: @side-margin+0px;
+}
+
+.invest-form-text {
+    .elems-width;
+}
+
+.controllers {
+    margin-right: @side-margin+0px;
 }

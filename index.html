@@ -6,31 +6,46 @@
     </head>
     <body>
         <script type="text/template" id="form-template">
-            <h1>Инвестировать сейчас</h1>
-            <div class="separator">
-
+            <div class="header">
+                <h1>Инвестировать сейчас</h1>
             </div>
             <div class="invest">
-                <label for="invest-summ">Сумма инвестиции</label>
-                <input type="text" name="sumInv" class="invest-form-text" value="<%-formValues.sumInv%>"><br/>
-                <label for="multiplikator">Мультипликатор</label>
-                <input type="text" name="mult" class="invest-form-text" value="<%-formValues.mult%>">
+                <div class="labels">
+                    <label for="invest-summ">Сумма инвестиции</label><br/>
+                    <label for="multiplikator">Мультипликатор</label>
+                </div>
+                <div class="controllers">
+                    <input type="text" name="sumInv" class="invest-form-text" value="<%-formValues.sumInv%>"><br/>
+                    <input type="text" name="mult" class="invest-form-text" value="<%-formValues.mult%>">
+                    <div class="slider">
+                        <div class="slider-controller">
+                            <div class="slider-range"></div>
+                            <span class="slider-roller"></span>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="limits">
-                <label for="limits-type">Ограничения в</label>
-                <div class="limits-type">
+                <div class="labels">
+                    <label for="limits-type">Ограничения в</label>
+                </div>
+                <div class="limits-type" class="controllers">
                     <input type="radio" name="type" class="limits-type-radio" value="%">
                     <label>%</label>
                     <input type="radio" name="type" class="limits-type-radio" checked="checked" value="$">
                     <label>$</label>
                 </div>
                 <div class="limits-values">
-                    <input type="checkbox" name="takeProfit" class="limits-values-checkbox">
-                    <label for="profit">Прибыль</label>
-                    <input type="text" name="takeProfit" class="invest-form-text" value="<%-formValues.takeProfit%>" disabled="disabled"><br/>
-                    <input type="checkbox" name="stopLoss" class="limits-values-checkbox">
-                    <label for="lose">Убыток</label>
-                    <input type="text" name="stopLoss" class="invest-form-text" value="<%-formValues.stopLoss%>" disabled="disabled">
+                    <div class="labels">
+                        <input type="checkbox" name="takeProfit" class="limits-values-checkbox">
+                        <label for="profit">Прибыль</label><br/>
+                        <input type="checkbox" name="stopLoss" class="limits-values-checkbox">
+                        <label for="lose">Убыток</label>
+                    </div>
+                    <div class="controllers">
+                        <input type="text" name="takeProfit" class="invest-form-text" value="<%-formValues.takeProfit%>" disabled="disabled"><br/>
+                        <input type="text" name="stopLoss" class="invest-form-text" value="<%-formValues.stopLoss%>" disabled="disabled">
+                    </div>
                 </div>
             </div>
             <div class="post">

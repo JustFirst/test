@@ -1,4 +1,56 @@
+h1 {
+  font-family: Helvetica;
+  font-size: 20px;
+  margin-left: 10px;
+}
+p,
+span,
+label {
+  font-family: Helvetica;
+  font-size: 14px;
+}
+.header {
+  border-bottom: 1px solid #e0e2e4;
+}
+.float-left {
+  float: left;
+}
+.labels-padding {
+  padding-right: 40px;
+}
 .invest-form {
-  height: 400px;
-  width: 300px;
+  height: 368px;
+  width: 316px;
+}
+.elems-width {
+  width: 138px;
+}
+.slider-controller {
+  border: 3px solid #7e98e5;
+  position: relative;
+  margin: 10px 0px;
+}
+.slider-controller:hover {
+  cursor: pointer;
+}
+.slider-roller {
+  width: 6px;
+  height: 6px;
+  border-radius: 100%;
+  border-width: 6px;
+  border-style: solid;
+  border-color: #7e98e5;
+  position: absolute;
+}
+.labels {
+  position: relative;
+  width: 138px;
+  float: left;
+  margin-left: 10px;
+}
+.invest-form-text {
+  width: 138px;
+}
+.controllers {
+  margin-right: 10px;
 }
