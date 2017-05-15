@@ -1,9 +1,10 @@
 //out: styles.css
 //sourcemap: false
 //compress: false
-@side-margin: 10;
+@side-margin: 15;
 @form-heigth: 368;
 @form-widht: 316;
+@elems-height: 17;
 
 h1 {
     font-family:Helvetica;
@@ -20,18 +21,6 @@ p, span, label {
     border-bottom: 1px solid #e0e2e4;
 }
 
-.float-left {
-    float: left;
-}
-
-.labels-padding {
-    padding-right: 40px;
-}
-
-.bottom-padding {
-
-}
-
 .invest-form {
     height: @form-heigth+0px;
     width: @form-widht+0px;
@@ -41,10 +30,18 @@ p, span, label {
     width: (@form-widht/2-@side-margin*2)+0px;
 }
 
+.slider {
+    display: none;
+    background-color: #3a3b3c;
+    position: absolute;
+    height: 50px;
+    width: @form-widht+0px;
+}
+
 .slider-controller {
+    margin: 15px 20px;
     border: 3px solid #7e98e5;
     position: relative;
-    margin: 10px 0px;
     &:hover {
         cursor: pointer;
     }
@@ -58,19 +55,183 @@ p, span, label {
     border-style: solid;
     border-color: #7e98e5;
     position: absolute;
+    margin-top:-9px;
+    margin-left: -9px;
 }
 
-.labels {
-    position: relative;
+.flex {
+    display: flex;
+    display: inline-flex;
+}
+
+.flex-direction(@direction) when (@direction = 1)
+{
+    flex-direction: row;
+}
+
+.flex-direction(@direction) when (@direction = 2)
+{
+    flex-direction: row-revers;
+}
+
+.flex-direction(@direction) when (@direction = 3)
+{
+    flex-direction: column;
+}
+
+.flex-direction(@direction) when (@direction = 4)
+{
+    flex-direction: column-reverse;
+}
+
+.flex-wrap(@wrap) when (@wrap = 1)
+{
+    flex-wrap: nowrap;
+}
+
+.flex-wrap(@wrap) when (@wrap = 2)
+{
+    flex-wrap: wrap;
+}
+
+.flex-wrap(@wrap) when (@wrap = 3)
+{
+    flex-wrap: wrap-reverse;
+}
+
+.align-items(@align) when (@align = 1)
+{
+    align-items: auto;
+}
+
+.align-items(@align) when (@align = 2)
+{
+    align-items:flex-start;
+}
+
+.align-items(@align) when (@align = 3)
+{
+    align-items:flex-end;
+}
+
+.align-items(@align) when (@align = 4)
+{
+    align-items:baseline;
+}
+
+.align-items(@align) when (@align = 5)
+{
+    align-items:center;
+}
+
+.align-items(@align) when (@align = 6)
+{
+    align-items:stretch;
+}
+
+.justify-content(@justify) when (@justify = 1) {
+    justify-content: flex-start;
+}
+
+.justify-content(@justify) when (@justify = 2) {
+    justify-content: flex-end;
+}
+
+.justify-content(@justify) when (@justify = 3) {
+    justify-content: center;
+}
+
+.justify-content(@justify) when (@justify = 4) {
+    justify-content: space-between;
+}
+
+.justify-content(@justify) when (@justify = 1) {
+    justify-content: space-around;
+}
+
+.flexbox
+{
+    display: -webkit-flex;
+    display: -ms-flex;
+    display: flex;
+}
+
+.invest-form {
+    .flexbox;
+    .flex-direction(3);
+}
+
+.controller-group {
+    .flexbox;
+    .flex-direction(1);
+    .justify-content(4);
+    margin-bottom: 10px;
+}
+
+.form-element {
     .elems-width;
-    .float-left;
+    height: @elems-height+0px;
+}
+
+.descriptor {
     margin-left: @side-margin+0px;
 }
 
-.invest-form-text {
-    .elems-width;
+.controller {
+    margin-right: @side-margin+0px;
 }
 
-.controllers {
-    margin-right: @side-margin+0px;
+.limits-type {
+    width: (@form-widht/2-@side-margin*2)+4px;
+}
+
+.limits-set {
+    display: none;
+}
+
+.open-limits{
+    margin-bottom: 10px;    
+}
+
+.after-header {
+    margin-top: 25px;
+}
+
+input[type="checkbox"], input[type="radio"] {
+    display: none;
+}
+
+.checkApearence {
+    display: inline-block;
+    width: 13px;
+    height: 13px;
+    border: 1px solid #e0e2e4;
+    border-radius: 2px;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.radio-apearence {
+    display: inline-block;
+    width: 13px;
+    height: 13px;
+    border: 1px solid #e0e2e4;
+    border-radius: 100%;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.box-checked {
+    background: url("../img/checkboxIcon.jpg");
+}
+
+.radio-checked {
+    background: url("../img/radioIcon.jpg");
+    background-position: -1px;
+}
+
+label {
+    line-height: 1.5;
 }

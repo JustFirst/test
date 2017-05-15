@@ -10,41 +10,56 @@
                 <h1>Инвестировать сейчас</h1>
             </div>
             <div class="invest">
-                <div class="labels">
-                    <label for="invest-summ">Сумма инвестиции</label><br/>
-                    <label for="multiplikator">Мультипликатор</label>
+                <div class="controller-group after-header">
+                    <label for="sumInv" class="form-element descriptor">Сумма инвестиции</label>
+                    <input type="text" id="sumInv" name="sumInv" class="invest-form-text form-element controller" value="<%-formValues.sumInv%>">
                 </div>
-                <div class="controllers">
-                    <input type="text" name="sumInv" class="invest-form-text" value="<%-formValues.sumInv%>"><br/>
-                    <input type="text" name="mult" class="invest-form-text" value="<%-formValues.mult%>">
-                    <div class="slider">
-                        <div class="slider-controller">
-                            <div class="slider-range"></div>
-                            <span class="slider-roller"></span>
-                        </div>
+                <div class="controller-group">
+                    <label for="mult" class="form-element descriptor">Мультипликатор</label>
+                    <input type="text" id="mult" name="mult" class="invest-form-text form-element controller" value="<%-formValues.mult%>">
+                </div>
+                <div class="slider">
+                    <div class="slider-controller">
+                        <div class="slider-range"></div>
+                        <span class="slider-roller"></span>
                     </div>
                 </div>
             </div>
             <div class="limits">
-                <div class="labels">
-                    <label for="limits-type">Ограничения в</label>
+                <div class=>
+                <div class="descriptor open-limits">
+                    <span>Ограничить прибыль и убытки</span>
                 </div>
-                <div class="limits-type" class="controllers">
-                    <input type="radio" name="type" class="limits-type-radio" value="%">
-                    <label>%</label>
-                    <input type="radio" name="type" class="limits-type-radio" checked="checked" value="$">
-                    <label>$</label>
-                </div>
-                <div class="limits-values">
-                    <div class="labels">
-                        <input type="checkbox" name="takeProfit" class="limits-values-checkbox">
-                        <label for="profit">Прибыль</label><br/>
-                        <input type="checkbox" name="stopLoss" class="limits-values-checkbox">
-                        <label for="lose">Убыток</label>
+                <div class="limits-set">
+                    <div class="controller-group">
+                        <label for="limits-type" class="form-element descriptor">Ограничения в</label>
+                        <div class="limits-type form-element controller">
+                            <input type="radio" id="currencyType" name="limitsType" class="limits-type-radio" value="%">
+                            <label for="currencyType" class="radio-apearence"></label>
+                            <label for="currencyType">%</label>
+                            <input type="radio" id="percentType" name="limitsType" class="limits-type-radio" checked="checked" value="$">
+                            <label for="percentType" class="radio-apearence radio-checked"></label>
+                            <label for="percentType">$</label>
+                        </div>
                     </div>
-                    <div class="controllers">
-                        <input type="text" name="takeProfit" class="invest-form-text" value="<%-formValues.takeProfit%>" disabled="disabled"><br/>
-                        <input type="text" name="stopLoss" class="invest-form-text" value="<%-formValues.stopLoss%>" disabled="disabled">
+
+                    <div class="limits-values">
+                        <div class="controller-group">
+                            <div class="form-element descriptor">
+                                <input type="checkbox" id="profitCheckbox" name="takeProfit" class="limits-values-checkbox">
+                                <label for="profitCheckbox" class="checkApearence"></label>
+                                <label for="profitCheckbox">Прибыль</label>
+                            </div>
+                            <input type="text" name="takeProfit" class="invest-form-text form-element controller" value="<%-formValues.takeProfit%>" disabled="disabled">
+                        </div>
+                        <div class="controller-group">
+                            <div class="form-element descriptor">
+                                <input type="checkbox" id="loseCheckbox" name="stopLoss" class="limits-values-checkbox">
+                                <label for="loseCheckbox" class="checkApearence"></label>
+                                <label for="loseCheckbox">Убыток</label>
+                            </div>
+                            <input type="text" name="stopLoss" class="invest-form-text form-element controller" value="<%-formValues.stopLoss%>" disabled="disabled">
+                        </div>
                     </div>
                 </div>
             </div>
