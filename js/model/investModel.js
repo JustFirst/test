@@ -85,19 +85,11 @@
                 }
             },
 
-            countLossLimit: function (val, options) {
-                var value = val || this.get("stopLoss");
-                if (value && options.inDollars) {
-                    options.defaultVal = false;
-                    this.set("stopLoss", this.get("sumInv") * value / 100, options);
-                }
-            },
-
             sendData: function () {
                 var data = this.toJSON();
                 var undefIndexes = [];
                 for (var i = 0; i < Object.keys(data).length; i++) {
-                    if (data[Object.keys(data)[i]]) {
+                    if (!data[Object.keys(data)[i]] || Object.keys(data)[i]==="factInv") {
                         undefIndexes.push(i);
                     }
                 }

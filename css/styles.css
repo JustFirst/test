@@ -96,7 +96,6 @@ label {
   height: 60px;
   width: 296px;
   margin-left: 20px;
-  margin-top: 5px;
 }
 .slider.active {
   display: block;
@@ -232,6 +231,7 @@ label {
 .numeric-updown {
   width: 12px;
   height: 12px;
+  display: block;
   position: absolute;
   border: 1px solid #909294;
   margin-left: 115px;
@@ -278,6 +278,7 @@ label {
   color: #909294;
 }
 #fact-inv {
+  display: block;
   position: absolute;
   margin-top: -16px;
   margin-left: 10px;
