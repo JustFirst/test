@@ -5,11 +5,16 @@
         $ = global.$,
         InvestModel = Backbone.Model.extend({
             defaults: {
-                sumInv: 10000,
-                mult: 20,
+                sumInv: 5000,
+                mult: 40,
+                factInv: 200000,
                 takeProfit: undefined,
                 stopLoss: undefined,
                 direction:"growth"
+            },
+
+            initialize: function () {
+                this.on("change:sumInv change:mult", this.countFactInv, this);
             },
 
             validate: function (attrs, options) {
@@ -18,26 +23,29 @@
                         if (attrs.sumInv < 100) {
                             return "Минимальная сумма инвестиции $ 100";
                         }
+                        this.trigger("valid", options);
                         break;
                     case "mult":
-                        if (attrs.mult < 1 || attrs.mult > 1) {
+                        if (attrs.mult < 1 || attrs.mult > 40) {
                             return "Неверное занчение мультипликатора";
                         }
+                        this.trigger("valid", options);
                         break;
                     case "takeProfit":
-                        if (options.inPersent && attrs.takeProfit) {
+                        if (options.inPersent && attrs.takeProfit !== void(0)) {
                             if (attrs.takeProfit < attrs.sumInv * 0.1) {
                                 return "Не может быть меньше 10%";
                             }
                         }
-                        if (options.inDollars && attrs.takeProfit) {
+                        if (options.inDollars && attrs.takeProfit !== void(0)) {
                             if (attrs.takeProfit < attrs.sumInv * 0.1) {
                                 return "Не может быть меньше $" + attrs.sumInv * 0.1;
                             }
                         }
+                        this.trigger("valid", options);
                         break;
                     case "stopLoss":
-                        if (options.inPersent && attrs.stopLoss) {
+                        if (options.inPersent && attrs.stopLoss !== void(0)) {
                             if (attrs.stopLoss < attrs.sumInv * 0.1) {
                                 return "Не может быть меньше 10%";
                             }
@@ -45,7 +53,7 @@
                                 return "Не может быть больше 100%";
                             }
                         }
-                        if (options.inDollars && attrs.stopLoss) {
+                        if (options.inDollars && attrs.stopLoss !== void(0)) {
                             if (attrs.stopLoss < attrs.sumInv * 0.1) {
                                 return "Не может быть меньше $" + attrs.sumInv * 0.1;
                             }
@@ -53,9 +61,35 @@
                                 return "Не может быть больше $" + attrs.sumInv;
                             }
                         }
+                        this.trigger("valid", options);
                         break;
                     default:
+                        this.trigger("valid", options);
                         break;
+                }
+            },
+
+            countFactInv: function () {
+                this.set("factInv", this.get("mult") * this.get("sumInv"));
+                console.log(this.get("mult"), this.get("sumInv"));
+            },
+
+            countLimits: function (val, options) {
+                if (val && options.target === "takeProfit") {
+                    this.set("takeProfit", this.get("sumInv") * val / 100, options);
+                }
+                else {
+                    if (val && options.target === "stopLoss") {
+                        this.set("stopLoss", this.get("sumInv") * val / 100, options);
+                    }
+                }
+            },
+
+            countLossLimit: function (val, options) {
+                var value = val || this.get("stopLoss");
+                if (value && options.inDollars) {
+                    options.defaultVal = false;
+                    this.set("stopLoss", this.get("sumInv") * value / 100, options);
                 }
             },
 
@@ -63,7 +97,7 @@
                 var data = this.toJSON();
                 var undefIndexes = [];
                 for (var i = 0; i < Object.keys(data).length; i++) {
-                    if (data[Object.keys(data)[i]] === undefined) {
+                    if (data[Object.keys(data)[i]]) {
                         undefIndexes.push(i);
                     }
                 }
@@ -77,10 +111,9 @@
                     method: "POST",
                     data: data
                 }).done(function (data) {
-                    console.log(data);
+                    alert(data);
                 }).fail(function(data, status, error) {
-                    console.log("упал, да и хуй с ним");
-                    console.log(status);
+                    alert(status);
                 });
             }
         });

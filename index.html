@@ -12,23 +12,49 @@
             <div class="invest">
                 <div class="controller-group after-header">
                     <label for="sumInv" class="form-element descriptor">Сумма инвестиции</label>
-                    <input type="text" id="sumInv" name="sumInv" class="invest-form-text form-element controller" value="<%-formValues.sumInv%>">
+
+                    <div class="text-wrapper controller">
+                        <div id="sumInvError" class="error">
+                            <span class="error-text">
+                            </span>
+                        </div>
+                        <input type="text" id="sumInv"class="invest-form-text form-element" value="<%-formValues.sumInv%>">
+                    </div>
                 </div>
                 <div class="controller-group">
                     <label for="mult" class="form-element descriptor">Мультипликатор</label>
-                    <input type="text" id="mult" name="mult" class="invest-form-text form-element controller" value="<%-formValues.mult%>">
+                    <div class="form-element mult-group controller">
+                        <div class="text-wrapper mult-wrapper">
+                            <div id="multError" class="error">
+                                <span class="error-text">
+                                </span>
+                            </div>
+                            <input type="text" id="mult" class="invest-form-text form-element" value="<%-formValues.mult%>">
+                        </div>
+                        <div class="mult-value-wraper">
+                            =
+                            <span id="fact-inv"><%-formValues.factInv%></span>
+                        </div>
+                    </div>
                 </div>
                 <div class="slider">
                     <div class="slider-controller">
                         <div class="slider-range"></div>
                         <span class="slider-roller"></span>
+                        <div class="slider-notes">
+                            <span id="one">1</span>
+                            <span id="five">5</span>
+                            <span id="twenty">20</span>
+                            <span id="forty">40</span>
+                        </div>
                     </div>
+
                 </div>
             </div>
             <div class="limits">
                 <div class=>
                 <div class="descriptor open-limits">
-                    <span>Ограничить прибыль и убытки</span>
+                    Ограничить прибыль и убытки
                 </div>
                 <div class="limits-set">
                     <div class="controller-group">
@@ -46,29 +72,49 @@
                     <div class="limits-values">
                         <div class="controller-group">
                             <div class="form-element descriptor">
-                                <input type="checkbox" id="profitCheckbox" name="takeProfit" class="limits-values-checkbox">
-                                <label for="profitCheckbox" class="checkApearence"></label>
+                                <input type="checkbox" id="profitCheckbox" target="takeProfit" class="limits-values-checkbox">
+                                <label for="profitCheckbox" class="check-apearence"></label>
                                 <label for="profitCheckbox">Прибыль</label>
                             </div>
-                            <input type="text" name="takeProfit" class="invest-form-text form-element controller" value="<%-formValues.takeProfit%>" disabled="disabled">
+                            <div class="text-wrapper controller disabled limit-text-wrapper">
+                                <div id="takeProfitError" class="error">
+                                    <span class="error-text">
+                                    </span>
+                                </div>
+                                <input type="text" id="takeProfit"class="invest-form-text form-element limit-text" value="<%-formValues.takeProfit%>" disabled>
+                                <span class="numeric-updown numeric-up"></span>
+                                <span class="numeric-updown numeric-down"></span>
+                            </div>
+                            <div class="disabler form-element active" target="takeProfit">
+                            </div>
                         </div>
                         <div class="controller-group">
                             <div class="form-element descriptor">
-                                <input type="checkbox" id="loseCheckbox" name="stopLoss" class="limits-values-checkbox">
-                                <label for="loseCheckbox" class="checkApearence"></label>
+                                <input type="checkbox" id="loseCheckbox" target="stopLoss" class="limits-values-checkbox">
+                                <label for="loseCheckbox" class="check-apearence"></label>
                                 <label for="loseCheckbox">Убыток</label>
                             </div>
-                            <input type="text" name="stopLoss" class="invest-form-text form-element controller" value="<%-formValues.stopLoss%>" disabled="disabled">
+                            <div class="text-wrapper controller disabled limit-text-wrapper">
+                                <div id="stopLossError" class="error">
+                                    <span class="error-text">
+                                    </span>
+                                </div>
+                                <input type="text" id="stopLoss"class="invest-form-text form-element limit-text" value="<%-formValues.stopLoss%>" disabled>
+                                <span class="numeric-updown numeric-up"></span>
+                                <span class="numeric-updown numeric-down"></span>
+                            </div>
+                            <div class="disabler form-element active" target="stopLoss">
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="post">
-                <div class="in-reduction">
-                    <input type="button" name="in-reduction" class="btn" value="В падение">
+            <div class="post controller-group">
+                <div class="in-reduction btn">
+                    <span class="descr-btn">В снижение</span>
                 </div>
-                <div class="in-growth">
-                    <input type="button" name="in-growth" class="btn" value="В рост">
+                <div class="in-grow btn">
+                    <span class="descr-btn">В рост</span>
                 </div>
             </div>
         </script>
