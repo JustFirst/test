@@ -9,101 +9,101 @@
             <div class="header">
                 <h1>Инвестировать сейчас</h1>
             </div>
-            <div class="invest">
-                <div class="controller-group after-header">
-                    <label for="sumInv" class="form-element descriptor">Сумма инвестиции</label>
+            <div class="invest-params">
+                <div class="invest">
+                    <div class="controller-group after-header">
+                        <label for="sumInv" class="form-element descriptor">Сумма инвестиции</label>
 
-                    <div class="text-wrapper controller">
-                        <div id="sumInvError" class="error">
-                            <span class="error-text">
-                            </span>
-                        </div>
-                        <input type="text" id="sumInv"class="invest-form-text form-element" value="<%-formValues.sumInv%>">
-                    </div>
-                </div>
-                <div class="controller-group">
-                    <label for="mult" class="form-element descriptor">Мультипликатор</label>
-                    <div class="form-element mult-group controller">
-                        <div class="text-wrapper mult-wrapper">
-                            <div id="multError" class="error">
+                        <div class="text-wrapper controller">
+                            <div id="sumInvError" class="error">
                                 <span class="error-text">
                                 </span>
                             </div>
-                            <input type="text" id="mult" class="invest-form-text form-element" value="<%-formValues.mult%>">
-                        </div>
-                        <div class="mult-value-wraper">
-                            =
-                            <span id="fact-inv"><%-formValues.factInv%></span>
+                            <input type="text" id="sumInv"class="invest-form-text form-element" value="<%-formValues.sumInv%>">
                         </div>
                     </div>
-                </div>
-                <div class="slider">
-                    <div class="slider-controller">
-                        <div class="slider-range"></div>
-                        <span class="slider-roller"></span>
-                        <div class="slider-notes">
-                            <span id="one">1</span>
-                            <span id="five">5</span>
-                            <span id="twenty">20</span>
-                            <span id="forty">40</span>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-            <div class="limits">
-                <div class=>
-                <div class="descriptor open-limits">
-                    Ограничить прибыль и убытки
-                </div>
-                <div class="limits-set">
                     <div class="controller-group">
-                        <label for="limits-type" class="form-element descriptor">Ограничения в</label>
-                        <div class="limits-type form-element controller">
-                            <input type="radio" id="currencyType" name="limitsType" class="limits-type-radio" value="%">
-                            <label for="currencyType" class="radio-apearence"></label>
-                            <label for="currencyType">%</label>
-                            <input type="radio" id="percentType" name="limitsType" class="limits-type-radio" checked="checked" value="$">
-                            <label for="percentType" class="radio-apearence radio-checked"></label>
-                            <label for="percentType">$</label>
+                        <label for="mult" class="form-element descriptor">Мультипликатор</label>
+                        <div class="form-element mult-group controller">
+                            <div class="text-wrapper mult-wrapper">
+                                <div id="multError" class="error">
+                                    <span class="error-text">
+                                    </span>
+                                </div>
+                                <input type="text" id="mult" class="invest-form-text form-element" value="<%-formValues.mult%>">
+                            </div>
+                            <div class="mult-value-wraper">
+                                =
+                                <span id="fact-inv"><%-formValues.factInv%></span>
+                            </div>
                         </div>
                     </div>
-
-                    <div class="limits-values">
-                        <div class="controller-group">
-                            <div class="form-element descriptor">
-                                <input type="checkbox" id="profitCheckbox" target="takeProfit" class="limits-values-checkbox">
-                                <label for="profitCheckbox" class="check-apearence"></label>
-                                <label for="profitCheckbox">Прибыль</label>
-                            </div>
-                            <div class="text-wrapper controller disabled limit-text-wrapper">
-                                <div id="takeProfitError" class="error">
-                                    <span class="error-text">
-                                    </span>
-                                </div>
-                                <input type="text" id="takeProfit"class="invest-form-text form-element limit-text" value="<%-formValues.takeProfit%>" disabled>
-                                <span class="numeric-updown numeric-up"></span>
-                                <span class="numeric-updown numeric-down"></span>
-                            </div>
-                            <div class="disabler form-element active" target="takeProfit">
+                    <div class="slider">
+                        <div class="slider-controller">
+                            <div class="slider-range"></div>
+                            <span class="slider-roller"></span>
+                            <div class="slider-notes">
+                                <span id="one">1</span>
+                                <span id="five">5</span>
+                                <span id="twenty">20</span>
+                                <span id="forty">40</span>
                             </div>
                         </div>
+                    </div>
+                </div>
+                <div class="limits">
+                    <div class="descriptor open-limits">
+                        Ограничить прибыль и убытки
+                    </div>
+                    <div class="limits-set">
                         <div class="controller-group">
-                            <div class="form-element descriptor">
-                                <input type="checkbox" id="loseCheckbox" target="stopLoss" class="limits-values-checkbox">
-                                <label for="loseCheckbox" class="check-apearence"></label>
-                                <label for="loseCheckbox">Убыток</label>
+                            <label for="limits-type" class="form-element descriptor">Ограничения в</label>
+                            <div class="limits-type form-element controller">
+                                <input type="radio" id="currencyType" name="limitsType" class="limits-type-radio" value="%">
+                                <label for="currencyType" class="radio-apearence"></label>
+                                <label for="currencyType">%</label>
+                                <input type="radio" id="percentType" name="limitsType" class="limits-type-radio" checked="checked" value="$">
+                                <label for="percentType" class="radio-apearence radio-checked"></label>
+                                <label for="percentType">$</label>
                             </div>
-                            <div class="text-wrapper controller disabled limit-text-wrapper">
-                                <div id="stopLossError" class="error">
-                                    <span class="error-text">
-                                    </span>
+                        </div>
+
+                        <div class="limits-values">
+                            <div class="controller-group">
+                                <div class="form-element descriptor">
+                                    <input type="checkbox" id="profitCheckbox" target="takeProfit" class="limits-values-checkbox">
+                                    <label for="profitCheckbox" class="check-apearence"></label>
+                                    <label for="profitCheckbox">Прибыль</label>
                                 </div>
-                                <input type="text" id="stopLoss"class="invest-form-text form-element limit-text" value="<%-formValues.stopLoss%>" disabled>
-                                <span class="numeric-updown numeric-up"></span>
-                                <span class="numeric-updown numeric-down"></span>
+                                <div class="text-wrapper controller disabled limit-text-wrapper">
+                                    <div id="takeProfitError" class="error">
+                                        <span class="error-text">
+                                        </span>
+                                    </div>
+                                    <input type="text" id="takeProfit"class="invest-form-text form-element limit-text" value="<%-formValues.takeProfit%>" disabled>
+                                    <span class="numeric-updown numeric-up"></span>
+                                    <span class="numeric-updown numeric-down"></span>
+                                </div>
+                                <div class="disabler form-element active" target="takeProfit">
+                                </div>
                             </div>
-                            <div class="disabler form-element active" target="stopLoss">
+                            <div class="controller-group">
+                                <div class="form-element descriptor">
+                                    <input type="checkbox" id="loseCheckbox" target="stopLoss" class="limits-values-checkbox">
+                                    <label for="loseCheckbox" class="check-apearence"></label>
+                                    <label for="loseCheckbox">Убыток</label>
+                                </div>
+                                <div class="text-wrapper controller disabled limit-text-wrapper">
+                                    <div id="stopLossError" class="error">
+                                        <span class="error-text">
+                                        </span>
+                                    </div>
+                                    <input type="text" id="stopLoss"class="invest-form-text form-element limit-text" value="<%-formValues.stopLoss%>" disabled>
+                                    <span class="numeric-updown numeric-up"></span>
+                                    <span class="numeric-updown numeric-down"></span>
+                                </div>
+                                <div class="disabler form-element active" target="stopLoss">
+                                </div>
                             </div>
                         </div>
                     </div>
