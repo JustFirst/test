@@ -97,15 +97,15 @@
                     delete data[Object.keys(data)[undefIndexes[undefIndexes.length - 1]]];
                     undefIndexes.pop();
                 }
-                console.log(data);
                 var request = $.ajax({
                     url: "index.php",
                     method: "POST",
-                    data: data
+                    data: JSON.stringify(data),
+                    dataType: "json"
                 }).done(function (data) {
                     alert(data);
-                }).fail(function(data, status, error) {
-                    alert(status);
+                }).fail(function(xhr, status, error) {
+                    alert(error);
                 });
             }
         });
